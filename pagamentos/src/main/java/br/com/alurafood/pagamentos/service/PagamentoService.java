@@ -62,7 +62,7 @@ public class PagamentoService {
     public void confirmarPagamento(Long id){
         Optional<Pagamento> pagamento = repository.findById(id);
 
-        if(!pagamento.isPresent()) {
+        if (!pagamento.isPresent()) {
             throw new EntityNotFoundException();
         }
 
@@ -71,15 +71,17 @@ public class PagamentoService {
         pedido.atualizaPagamento(pagamento.get().getPedidoId());
     }
 
+
     public void alteraStatus(Long id) {
         Optional<Pagamento> pagamento = repository.findById(id);
 
-        if(!pagamento.isPresent()) {
+        if (!pagamento.isPresent()) {
             throw new EntityNotFoundException();
         }
 
         pagamento.get().setStatus(Status.CONFIRMADO_SEM_INTEGRACAO);
         repository.save(pagamento.get());
+
     }
 }
 
