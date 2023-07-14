@@ -34,10 +34,9 @@ public class PedidoController {
         }
 
         @GetMapping("/porta")
-        public String retornaPorta(@Value("${local.server.port}") String porta) {
+        public String retornaPorta(@Value("${local.server.port}") String porta){
             return String.format("Requisição respondida pela instância executando na porta %s", porta);
         }
-
 
         @PostMapping()
         public ResponseEntity<PedidoDto> realizaPedido(@RequestBody @Valid PedidoDto dto, UriComponentsBuilder uriBuilder) {
